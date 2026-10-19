@@ -1,0 +1,157 @@
+:root {
+  --bg: #0f1115;
+  --card: #181b22;
+  --card-2: #20242d;
+  --line: #2b303b;
+  --text: #e8eaed;
+  --muted: #9aa0ab;
+  --accent: #c6ff3d;
+  --kcal: #c6ff3d;
+  --protein: #ff6b6b;
+  --carbs: #4dabf7;
+  --fat: #ffd43b;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.45;
+}
+
+.top { text-align: center; padding: 28px 16px 8px; }
+.top h1 { margin: 0 0 6px; font-size: clamp(1.6rem, 5vw, 2.2rem); }
+.top p { margin: 0; color: var(--muted); }
+
+main { width: min(94vw, 860px); margin: 0 auto; padding: 12px 0 24px; }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 18px;
+  margin: 14px 0;
+}
+
+h2 { margin: 0 0 12px; font-size: 1.15rem; }
+
+/* ---------- Form ---------- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 12px;
+}
+
+label { display: flex; flex-direction: column; gap: 4px; font-size: .85rem; color: var(--muted); }
+
+input, select {
+  font: inherit;
+  color: var(--text);
+  background: var(--card-2);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 9px 10px;
+}
+input:focus, select:focus, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+button {
+  font: inherit;
+  color: var(--text);
+  background: var(--card-2);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 9px 14px;
+  cursor: pointer;
+}
+button:hover { border-color: var(--accent); }
+
+button.primary {
+  margin-top: 16px;
+  width: 100%;
+  background: var(--accent);
+  color: #111;
+  font-weight: 700;
+  border-color: var(--accent);
+  padding: 11px;
+}
+
+.error { color: #ff8787; margin: 10px 0 0; min-height: 1.2em; font-size: .9rem; }
+
+/* ---------- Targets ---------- */
+.tag {
+  font-size: .72rem;
+  background: var(--card-2);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 2px 10px;
+  margin-left: 8px;
+  vertical-align: middle;
+  color: var(--accent);
+}
+
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 10px; }
+.stat { background: var(--card-2); border-radius: 10px; padding: 12px; text-align: center; border-top: 3px solid var(--c); }
+.stat b { display: block; font-size: 1.5rem; }
+.stat span { color: var(--muted); font-size: .8rem; }
+.stat.kcal { --c: var(--kcal); }
+.stat.protein { --c: var(--protein); }
+.stat.carbs { --c: var(--carbs); }
+.stat.fat { --c: var(--fat); }
+.stat.water { --c: #74c0fc; }
+
+.muted { color: var(--muted); font-size: .85rem; margin: 12px 0 0; }
+
+/* ---------- Actions ---------- */
+.actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0; }
+
+/* ---------- Meals ---------- */
+.meal { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; margin: 12px 0; }
+.meal-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; }
+.meal-head h3 { margin: 0; font-size: 1.05rem; }
+.chips { color: var(--muted); font-size: .82rem; margin: 2px 0 8px; }
+.chips b { color: var(--text); }
+.reroll { padding: 5px 10px; font-size: .82rem; }
+
+.meal ul { list-style: none; margin: 0; padding: 0; }
+.meal li {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 12px;
+  padding: 7px 0;
+  border-top: 1px solid var(--line);
+  font-size: .94rem;
+}
+.meal li .amt { color: var(--accent); font-weight: 600; text-align: right; }
+.meal li .kcal { color: var(--muted); min-width: 64px; text-align: right; }
+
+/* ---------- Summary ---------- */
+.bar-row { margin: 10px 0; }
+.bar-label { display: flex; justify-content: space-between; font-size: .88rem; margin-bottom: 4px; }
+.bar { height: 10px; background: var(--card-2); border-radius: 999px; overflow: hidden; }
+.bar i { display: block; height: 100%; background: var(--c); border-radius: 999px; }
+.bar-row.kcal { --c: var(--kcal); }
+.bar-row.protein { --c: var(--protein); }
+.bar-row.carbs { --c: var(--carbs); }
+.bar-row.fat { --c: var(--fat); }
+
+#grocery ul { margin: 0; padding-left: 20px; }
+#grocery li { padding: 2px 0; }
+
+footer { text-align: center; color: var(--muted); font-size: .8rem; padding: 8px 16px 32px; }
+
+@media (max-width: 480px) {
+  .meal li { grid-template-columns: 1fr auto; }
+  .meal li .kcal { display: none; }
+}
+
+@media print {
+  body { background: #fff; color: #000; }
+  .top p, #profile, .actions, .reroll, footer { display: none; }
+  .card, .meal { background: #fff; border-color: #bbb; }
+  .stat { background: #f3f3f3; }
+  .meal li .amt, .tag { color: #000; }
+  .bar { background: #ddd; }
+}

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Daily Meal Planner</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <h1>💪 Daily Meal Planner</h1>
+    <p>Macro-based meals for lifters. Enter your stats, pick a goal, get a full day of food.</p>
+  </header>
+
+  <main>
+    <form id="profile" class="card" autocomplete="off">
+      <h2>Your stats</h2>
+      <div class="grid">
+        <label>Weight (kg)
+          <input id="weight" type="number" min="35" max="200" step="0.5" value="70" required>
+        </label>
+        <label>Height (cm)
+          <input id="height" type="number" min="120" max="230" value="175" required>
+        </label>
+        <label>Age
+          <input id="age" type="number" min="16" max="80" value="22" required>
+        </label>
+        <label>Sex
+          <select id="sex">
+            <option value="male" selected>Male</option>
+            <option value="female">Female</option>
+          </select>
+        </label>
+        <label>Training level
+          <select id="activity">
+            <option value="1.375">Light: 1–2 workouts/week</option>
+            <option value="1.55" selected>Moderate: 3–4 workouts/week</option>
+            <option value="1.725">Heavy: 5–6 workouts/week</option>
+            <option value="1.9">Athlete: daily / twice a day</option>
+          </select>
+        </label>
+        <label>Goal
+          <select id="goal">
+            <option value="bulk" selected>Build muscle (surplus)</option>
+            <option value="maintain">Maintain</option>
+            <option value="cut">Lose fat (deficit)</option>
+          </select>
+        </label>
+        <label>Diet type
+          <select id="diet">
+            <option value="veg">Vegetarian</option>
+            <option value="egg">Eggetarian</option>
+            <option value="non" selected>Non-vegetarian</option>
+          </select>
+        </label>
+        <label>Meals per day
+          <select id="meals">
+            <option value="3">3</option>
+            <option value="4" selected>4</option>
+            <option value="5">5</option>
+          </select>
+        </label>
+      </div>
+      <button type="submit" class="primary">Generate plan</button>
+      <p id="error" class="error" role="alert"></p>
+    </form>
+
+    <section id="targets" class="card"></section>
+
+    <div class="actions">
+      <button id="shuffle" type="button">🔀 Shuffle all meals</button>
+      <button id="groceryBtn" type="button">🛒 Grocery list</button>
+      <button id="copy" type="button">📋 Copy plan</button>
+      <button id="print" type="button">🖨 Print</button>
+    </div>
+
+    <section id="plan"></section>
+    <section id="summary" class="card"></section>
+    <section id="grocery" class="card" hidden></section>
+  </main>
+
+  <footer>
+    Estimates only, not medical advice. Check with a doctor or dietitian before big diet changes.
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
