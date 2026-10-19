@@ -1,4 +1,4 @@
-# 💪 Daily Meal Planner
+# 💪 Daily Meal Planner for Gym Guys
 
 A small, dependency-free web app that builds a full day of meals for someone who lifts. Enter your stats and goal, and it works out your calories and macros, then fills your day with real foods in sensible portions. Plain HTML, CSS and JavaScript, no frameworks and no build step.
 
